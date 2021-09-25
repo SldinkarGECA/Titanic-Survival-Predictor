@@ -3,64 +3,111 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     <title>Titanic Survival Predictor</title>
+    <style>
+        html, body {
+            overflow-x: hidden;
+        }
+
+        body {
+            position: relative;
+        }
+    </style>
 </head>
 <body>
-<div>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/home">Titanic Survival Predictor</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="right collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/predict">Prediction</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Dataset Visualization</a>
-                    </li>
-                </ul>
+<section id="home">
+    <div class="container-fluid">
+        <div class="row g-2" style="display: flex;flex-direction: row;align-content: center">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <br>
+                <img alt="poster" src="../static/poster.jpg" class="img-fluid">
             </div>
         </div>
-    </nav>
-</div>
-<br><br><br>
-<div class="container-fluid">
-    <div class="row g-2">
-        <div class="col-md-6" style="background-color: rebeccapurple">
-            <p>
-                The sinking of the Titanic is one of the most infamous shipwrecks in history.<br>
-                On April 15, 1912, during her maiden voyage, the widely considered “unsinkable” RMS Titanic sank after
-                colliding with an iceberg. Unfortunately, there weren’t enough lifeboats for everyone onboard, resulting
-                in the death of 1502 out of 2224 passengers and crew.<br>
-                While there was some element of luck involved in surviving, it seems some groups of people were more
-                likely to survive than others.<br>
-            </p>
-        </div>
-        <div class="col-md-6 d-fl" style="background-color: red">
-            <br><br>
-            <h1 class="text-center">
-                Predict If you were likely to survive or not?
-            </h1>
-        </div>
     </div>
-
-</div>
-
-
-<!-- Option 1: Bootstrap Bundle with Popper -->
+</section>
+<br><br><br>
+<section id="prediction-form">
+    <form class="form" action="/predict" , method="POST">
+        <h1 class="text-center">Fill the data and Hit the Predict button to get result!</h1>
+        <div class="row text-center">
+            <div class="col-sm-12 col-lg-6 col-md-6">
+                <div class="row m-5">
+                    <label for="sex" class="col-sm-6 col-lg-6 col-md-6">Select your Sex:</label>
+                    <select class="col-sm-6 col-lg-6 col-md-6" id="sex" name="sex">
+                        <option value="female" selected>Female</option>
+                        <option value="male">Male</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-md-6">
+                <div class="row m-5">
+                    <label for="pclass" class="col-sm-6 col-lg-6 col-md-6">Select Passenger class:</label>
+                    <select class="col-sm-6 col-lg-6 col-md-6" id="pclass" name="pclass">
+                        <option value=1 selected>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-md-6">
+                <div class="row m-5">
+                    <label for="age" class="col-sm-6 col-lg-6 col-md-6">Enter your Age in years:</label>
+                    <input type="text" class="col-sm-6 col-lg-6 col-md-6" id="age" name="age">
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-md-6">
+                <div class="row m-5">
+                    <label for="sibsp" class="col-sm-6 col-lg-6 col-md-6">Select Number of your Siblings and Spouse
+                        travelling with you:</label>
+                    <select class="col-sm-6 col-lg-6 col-md-6" id="sibsp" name="sibsp">
+                        <option value=0 selected>0</option>
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-md-6">
+                <div class="row m-5">
+                    <label for="parch" class="col-sm-6 col-lg-6 col-md-6">Select Number of your Parents and Children
+                        travelling with you:</label>
+                    <select class="col-sm-6 col-lg-6 col-md-6" id="parch" name="parch">
+                        <option value=0 selected>0</option>
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=4>4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-md-6">
+                <div class="row m-5">
+                    <label for="fare" class="col-sm-6 col-lg-6 col-md-6">Enter approximate Fare:</label>
+                    <input type="text" class="col-sm-6 col-lg-6 col-md-6" id="fare" name="fare">
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-md-6">
+                <div class="row m-5">
+                    <label for="embark" class="col-sm-6 col-lg-6 col-md-6">Select Onboarding Station</label>
+                    <select class="col-sm-6 col-lg-6 col-md-6" id="embark" name="embark">
+                        <option value="C" selected>Cherbourg</option>
+                        <option value="Q">Queenstown</option>
+                        <option value="S">Southampton</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6 col-md-6">
+                <div class="row m-5">
+                    <button type="submit" class="btn btn-info button col-sm-6 col-lg-6 col-md-6 mx-auto">
+                        Predict your Survival!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<br><br><br><br><br><br>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
